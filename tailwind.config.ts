@@ -1,16 +1,22 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
 
 export default {
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ['./src/**/*.tsx'],
   theme: {
     extend: {
+      gridTemplateColumns: {
+        app: 'minmax(18rem, 20rem) 1fr',
+      },
+
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        'blue-ra-900': '#1E2A32',
+        'blue-ra-800': '#31404b',
+        'blue-ra-500': '#7fb2ff',
+        'blue-ra-200': '#ebf1ff',
+        'blue-ra-100': '#EEF0F4',
+        'green-ra-700': '#0f9d5d',
+        'green-ra-300': '#b2e3cb',
+        'red-ra-500': '#e36359',
       },
     },
   },
