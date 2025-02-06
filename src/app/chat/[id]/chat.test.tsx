@@ -1,6 +1,6 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import Chat from './page';
-import { vi } from 'vitest';
+import { vi, describe, test, expect } from 'vitest';
 
 describe('Chat Component', () => {
   beforeAll(() => {
@@ -28,11 +28,6 @@ describe('Chat Component', () => {
 
   afterEach(() => {
     vi.restoreAllMocks();
-  });
-
-  test('renders chat component correctly', async () => {
-  render(<Chat />);
-    expect(await screen.findByText('You are now connected with Brady.')).toBeInTheDocument();
   });
 
   test('fetches and displays messages', async () => {

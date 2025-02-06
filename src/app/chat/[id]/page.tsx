@@ -105,7 +105,7 @@ export default function ChatPage() {
             Begin the conversation by initiating Opening Protocol.
           </p>
 
-          {messages?.map((message) => <Message chatMessage={message} />)}
+          {messages?.map((message) => <Message chatMessage={message} key={message.id} />)}
 
           {messageLoading && (
             <div className="ml-4 mt-4">
