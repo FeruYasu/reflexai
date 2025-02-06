@@ -1,5 +1,6 @@
 import { Button } from '@/components';
 import { timestampToHour } from '@/helpers';
+import { apiFetch } from '@/helpers/apiFetch';
 import { Chat, Simulation } from '@prisma/client';
 import { format } from 'date-fns';
 
@@ -10,21 +11,8 @@ type ChatHistory = Chat & {
   simulation: Simulation;
 };
 
-async function getChats() {
-  try {
-    const response = await fetch(
-      'http://localhost:3000/api/chats?userId=d9acd3e5-18de-4ee9-8358-f6bd5fc8fe9f'
-    );
-
-    const chats = await response.json();
-    return chats;
-  } catch (error) {
-    return [];
-  }
-}
-
 export default async function History() {
-  const chats: ChatHistory[] = await getChats();
+  const chats: ChatHistory[] = await apiFetch('/chats?userId=d9acd3e5-18de-4ee9-8358-f6bd5fc8fe9f');
 
   const hasChats = chats.length > 0;
 

@@ -1,15 +1,8 @@
 import { Button } from '@/components';
 import { Message } from '@/components/message';
+import { apiFetch } from '@/helpers/apiFetch';
 import { ChatMessage } from '@prisma/client';
 import Link from 'next/link';
-
-async function getChatMessages(id: string) {
-  const response = await fetch(
-    `http://localhost:3000/api/chat-message?id=${id}`
-  );
-
-  return await response.json();
-}
 
 export default async function History({
   params,
@@ -18,7 +11,9 @@ export default async function History({
 }) {
   const id = (await params).id;
 
-  const messages: ChatMessage[] = await getChatMessages(id);
+  const messages: ChatMessage[] = await apiFetch(
+    `/chat-message?id=${id}`
+  );
 
   return (
     <div className="flex min-h-screen flex-col overflow-hidden p-6">

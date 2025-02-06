@@ -6,5 +6,5 @@ vi.mock("next/navigation", () => ({
     push: vi.fn(),
     pathname: "/mock-path",
   }),
-  useParams: () => "/mock-path",
+  useParams:  vi.fn(),
 }));

@@ -2,8 +2,10 @@
 import { Button } from '@/components';
 import TypingDots from '@/components/loading';
 import { Message } from '@/components/message';
-import { ChatMessage, Simulation } from '@prisma/client';
-import { Link, SendHorizonal } from 'lucide-react';
+import { apiFetch } from '@/helpers/apiFetch';
+import { Chat, ChatMessage, Simulation } from '@prisma/client';
+import { SendHorizonal } from 'lucide-react';
+import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
@@ -17,22 +19,18 @@ export default function ChatPage() {
   const { id } = useParams<{ id: string }>()
 
   async function getChatMessages() {
-    const response = await fetch(
-      `http://localhost:3000/api/chat-message?id=${id}`
+    const chatMessages = await apiFetch<ChatMessage[]>(
+      `/chat-message?id=${id}`
     );
-
-    const chatMessages = await response.json();
 
     setMessages(chatMessages);
   }
 
    async function getSimulation() {
-    const response = await fetch(
-      `http://localhost:3000/api/chat?chatId=${id}`
+    const chat = await apiFetch<Chat & { simulation: Simulation}>(
+      `/chat?chatId=${id}`
     );
   
-    const chat = await response.json();
-
     setSimulation(chat.simulation);
   }
 

@@ -1,6 +1,7 @@
 import { prisma } from '@/lib/prisma';
 import { NextRequest, NextResponse } from 'next/server';
-import { botResponses, determineResponseType } from '../bot/bot-response';
+import { determineResponseType } from '../bot/bot-response';
+import { botResponses } from '../bot/answers';
 
 export async function POST(req: Request) {
   try {
