@@ -1,30 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Assessment Project
 
-## Getting Started
+## Overview
+This project is a Next.js web application using Tailwind CSS for styling, Jest for testing, and Cypress for end-to-end testing. It also uses Prisma with an SQLite database. The application features a sidebar with two tabs: **Simulations** and **History**. The user, who is mocked within the application, can choose a training program in **Simulations** and review previous session chats in **History**.
 
-First, run the development server:
+## Technologies Used
+- **Next.js** (with TurboPack for faster builds)
+- **Tailwind CSS** (for styling)
+- **Vitest** (for unit testing)
+- **Cypress** (for end-to-end testing)
+- **Prisma** (ORM for database management)
+- **SQLite** (lightweight database solution)
 
-```bash
-npm run dev
+## Installation & Setup
+
+### Prerequisites
+Ensure you have the following installed:
+- **Node.js** (Latest LTS version recommended)
+- **Yarn or npm** (Package manager)
+- **SQLite** (Bundled with Prisma, no separate installation needed)
+
+### Steps to Run the Project
+1. Clone the repository:
+   ```sh
+   git clone <repo-url>
+   cd <project-folder>
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   # or
+   yarn install
+   ```
+3. Run the development server:
+   ```sh
+   npm run dev
+   # or
+   yarn dev
+   ```
+4. Open the application in your browser at:
+   ```sh
+   http://localhost:3000
+   ```
+
+## Available Commands
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Starts the development server with TurboPack |
+| `npm run build` | Builds the application for production |
+| `npm run start` | Runs the production server |
+| `npm run lint` | Lints the codebase using ESLint |
+| `npm run test` | Runs unit tests using Vitest |
+| `npm run cypress:web` | Opens Cypress in interactive mode for E2E tests |
+| `npm run cypress:headless` | Runs Cypress tests in headless mode |
+
+## Features
+- **Mocked User:** No authentication required; the user is predefined.
+- **Sidebar Navigation:**
+  - **Simulations:** Allows users to select a training program.
+  - **History:** Displays previous chat logs from past simulations.
+- **Prisma & SQLite Integration:** Simplifies data management and persistence.
+- **Testing Suite:** Comprehensive unit and E2E testing with Vitest and Cypress.
+
+## Database Setup
+Since the project uses SQLite, the database file is included in the repository. **Running migrations is not necessary unless making schema changes.** However, if needed, you can run the following command:
+```sh
+npx prisma migrate dev --name init
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Running Tests
+### Unit Tests:
+```sh
+npm run test
+```
+### End-to-End Tests:
+Run Cypress in interactive mode:
+```sh
+npm run cypress:web
+```
+Run Cypress tests in headless mode:
+```sh
+npm run cypress:headless
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+To build the project for production:
+```sh
+npm run build
+npm run start
+```
