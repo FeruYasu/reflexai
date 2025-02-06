@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "vitest"
+    "test": "vitest",
+    "cypress:web": "npx cypress open",
+    "cypress:headless": "npx cypress run --browser electron"
   },
   "dependencies": {
     "@prisma/client": "^6.3.1",
@@ -31,6 +33,7 @@
     "@typescript-eslint/eslint-plugin": "^8.23.0",
     "@typescript-eslint/parser": "^8.23.0",
     "@vitejs/plugin-react": "^4.3.4",
+    "cypress": "^13.7.2",
     "eslint": "^9.19.0",
     "eslint-config-next": "15.1.6",
     "eslint-config-prettier": "^10.0.1",

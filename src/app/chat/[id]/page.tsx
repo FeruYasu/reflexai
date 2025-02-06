@@ -130,7 +130,7 @@ export default function ChatPage() {
             if (e.key === 'Enter') handleSendMessage();
           }}
         />
-        <Button className="px-2" onClick={() => handleSendMessage()}>
+        <Button className="px-2" onClick={() => handleSendMessage()} id="send-button">
           <SendHorizonal />
         </Button>
       </div>

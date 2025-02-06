@@ -3,8 +3,6 @@ import Chat from './page';
 import { vi } from 'vitest';
 
 describe('Chat Component', () => {
-  const mockParams = { id: 'test-id' };
-
   beforeAll(() => {
     window.HTMLElement.prototype.scrollIntoView = vi.fn();
   });
@@ -33,17 +31,17 @@ describe('Chat Component', () => {
   });
 
   test('renders chat component correctly', async () => {
-  render(<Chat params={mockParams} />);
+  render(<Chat />);
     expect(await screen.findByText('You are now connected with Brady.')).toBeInTheDocument();
   });
 
   test('fetches and displays messages', async () => {
-    render(<Chat params={mockParams} />);
+    render(<Chat />);
     expect(await screen.findByText('Hello')).toBeInTheDocument();
   });
 
   test('sends message and displays bot response', async () => {
-    render(<Chat params={mockParams} />);
+    render(<Chat />);
 
     const input = screen.getByPlaceholderText('Send a message...');
     fireEvent.change(input, { target: { value: 'Hi there' } });
