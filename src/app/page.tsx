@@ -1,9 +1,27 @@
-import { Button } from '@/components/button/Button';
+import { SimulationCard } from '@/components/simulation-card';
+import { Simulation } from '@prisma/client';
 
-export default function Home() {
+export async function getSimulations() {
+  const response = await fetch(
+    'http://localhost:3000/api/simulations?userId=d9acd3e5-18de-4ee9-8358-f6bd5fc8fe9f'
+  );
+
+  const simulations = await response.json();
+  return simulations;
+}
+
+export default async function Home() {
+  const simulations: Simulation[] = await getSimulations();
+
   return (
-    <div className="grid min-h-screen grid-rows-[20px_1fr_20px] items-center justify-items-center gap-16 p-8 pb-20 font-[family-name:var(--font-geist-sans)] sm:p-20">
-      <Button>Click me</Button>
+    <div className="flex min-h-screen flex-col p-6">
+      <h1 className="mb-8 text-4xl font-semibold">Simulations</h1>
+
+      <div className="flex flex-wrap gap-4">
+        {simulations.map((simulation) => (
+          <SimulationCard key={simulation.id} simulation={simulation} />
+        ))}
+      </div>
     </div>
   );
 }

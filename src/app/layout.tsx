@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { SideBar } from '@/components/sidebar';
 import { ReactNode } from 'react';
+import { UserProvider } from '@/contexts/UserContext';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -27,11 +28,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} bg-blue-ra-100 antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} overflow-hidden bg-blue-ra-100 antialiased`}
       >
-        <div className="grid min-h-screen grid-cols-app">
-          <SideBar />
-          <main>{children}</main>
+        <div className="grid min-h-screen md:grid-cols-app lg:grid-cols-app">
+          <UserProvider>
+            <SideBar />
+            <main>{children}</main>
+          </UserProvider>
         </div>
       </body>
     </html>
